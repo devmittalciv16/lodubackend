@@ -1,0 +1,199 @@
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing:border-box;
+}
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    position: relative;
+    width: 95vw;
+    height: 95vw;
+}
+@media screen and (min-width:1100px){
+    .game{
+        width:80vh;
+        height:80vh;
+    }
+}
+.green {
+    background-color: #11ee6a;
+}
+.red {
+    background-color: #f76464;
+    border: none;
+}
+.yellow {
+    background-color: #fff780;
+    border: none;
+}
+.blue {
+    background-color: #43aaff;
+    border: none;
+}
+
+.darkgreen {
+    background-color: #07bb3f;
+}
+.darkred {
+    background-color: #c00101;
+    border: none;
+}
+.darkyellow {
+    background-color: #ffd000;
+    border: none;
+}
+.darkblue {
+    background-color: #0220a5;
+    border: none;
+}
+
+.house {
+    display: inline-block;
+    position: absolute;
+    width:40%;
+    height:40%;
+    padding:7%;
+}
+.box {
+    position: relative;
+    width:100%;
+    height:100%;
+    background-color:white;
+    padding:20%;
+}
+.square {
+    position: absolute;
+    
+    width:25%;
+    height:25%;
+
+}
+.square-one {
+    top:20%;
+    left:20%;
+    
+}
+.square-two {
+    top: 20%;
+    right: 20%;
+}
+.square-three {
+    bottom: 20%;
+    left: 20%;
+}
+.square-four {
+    bottom: 20%;
+    right: 20%;
+}
+.home {
+    display: flex;
+    position: absolute;
+    top:40%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2vw solid #f76464;
+    border-top: 2vw solid #fff780;
+    border-left: 2vw solid #11ee6a;
+    border-right: 2vw solid #43aaff;
+}
+
+.cells {
+    position: absolute;
+    width: 6.66% ;
+    height: 6.66%;
+    border-collapse: collapse;
+    border: 1px solid #33333370 ;
+}
+
+.safe {
+    background-color: #99999970;
+    /*-webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 8%);
+    
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    */
+}
+.g-start {
+    background-color: #11ee6a;
+    /*-webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    */
+}
+.y-start {
+    background-color: #fff780;
+    /*-webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    */
+}
+.r-start {
+    background-color: #f76464;
+    /*-webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    */
+}
+.b-start {
+    background-color: #43aaff;
+    /*-webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    */
+}
+
+
+.dice{
+    width : 5vw;
+    height : 5vw;
+    margin:4px;
+    border: 2px solid black;
+}
+
+.goti{
+    float:left;
+    border-radius: 80%;
+    width:45%;
+    height: 45%;
+}
+
+.homegoti{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.donegotis{
+    text-align: center;
+    width: 80vw ;
+    height:40px;
+    padding:auto;
+}
+.donegoti{
+    float: left;
+    border-radius: 50%;
+    width: 20px ;
+    height: 20px;    
+}
+
+.info{
+    font-family:'Open Sans', 'Helvetica Neue';
+    font-size:larger;
+    text-align: center;
+    margin:20px;
+}
+.gotibox{
+    border: 2px solid black;
+}
+.gotilabel{
+    font-family: 'Open Sans', 'Helvetica Neue';
+    font-size: larger;
+    text-align: center; 
+}
+
+.roll{
+    font-family: 'Open Sans', 'Helvetica Neue';
+    font-size: larger;
+}

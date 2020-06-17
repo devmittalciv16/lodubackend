@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="stylesheet" href="mycss.css"/>
+    <title>Ludo Queen</title>
+  </head>
+
+
+  <body class="">
+    <div class="game">
+        <div class="house green">
+            <div class="box">
+                <div id="g-1-home" class="homegoti square square-one green"></div>
+                <div id="g-2-home" class="homegoti square square-two green"></div>
+                <div id="g-3-home" class="homegoti square square-three green"></div>
+                <div id="g-4-home" class="homegoti square square-four green"></div>
+            </div>
+        </div>
+    
+        <div class="house yellow" style="right: 0">
+            <div class="box">
+                <div id="y-1-home" class="homegoti square square-one yellow"></div>
+                <div id="y-2-home" class="homegoti square square-two yellow"></div>
+                <div id="y-3-home" class="homegoti square square-three yellow"></div>
+                <div id="y-4-home" class="homegoti square square-four yellow"></div>
+            </div>
+        </div>
+    
+        <div class="house red" style="bottom: 0">
+            <div class="box" >
+                <div id="r-1-home" class="homegoti square square-one red"></div>
+                <div id="r-2-home" class="homegoti square square-two red"></div>
+                <div id="r-3-home" class="homegoti square square-three red"></div>
+                <div id="r-4-home" class="homegoti square square-four red"></div>
+            </div>
+        </div>
+    
+        <div class="house blue" style="bottom: 0;right: 0">
+            <div class="box">
+                <div id="b-1-home" class="homegoti square square-one blue"></div>
+                <div id="b-2-home" class="homegoti square square-two blue"></div>
+                <div id="b-3-home" class="homegoti square square-three blue"></div>
+                <div id="b-4-home" class="homegoti square square-four blue"></div>
+            </div>
+        </div>
+    
+        <div id="dice" class="home">
+            <div class="roll">Roll</div>
+        </div>
+        <div id="0-cell" class="cells" style="top: 40%;">0</div>
+        <div id="1-cell" class="cells g-start" style="top: 40%;left:6.66%;">1</div>
+        <div id="2-cell" class="cells" style="top: 40%;left:13.32%;">g-1</div>
+        <div id="3-cell" class="cells" style="top: 40%;left:19.98%;">3</div>
+        <div id="4-cell" class="cells" style="top: 40%;left:26.64%;">4</div>
+        <div id="5-cell" class="cells" style="top: 40%;left:33.3%;">5</div>
+    
+        <div id="11-cell" class="cells" style="top: 0;left:40%;">11</div>
+        <div id="10-cell" class="cells" style="top: 6.66%;left:40%;">10</div>
+        <div id="9-cell" class="cells safe" style="top: 13.32%;left:40%;">9</div>
+        <div id="8-cell" class="cells" style="top: 19.98%;left:40%;">8</div>
+        <div id="7-cell" class="cells" style="top: 26.64%;left:40%;">7</div>
+        <div id="6-cell" class="cells" style="top: 33.3%;left:40%;">6</div>
+    
+        <div id="12-cell" class="cells" style="top: 0;left:46.66%;">12</div>
+        <div id="13-y-cell" class="cells yellow" style="top: 6.66%;left:46.66%;">13-y</div>
+        <div id="14-y-cell" class="cells yellow" style="top: 13.32%;left:46.66%;">14-y</div>
+        <div id="15-y-cell" class="cells yellow" style="top: 19.98%;left:46.66%;">15-y</div>
+        <div id="16-y-cell" class="cells yellow" style="top: 26.64%;left:46.66%;">16-y</div>
+        <div id="17-y-cell" class="cells yellow" style="top: 33.3%;left:46.66%;">17-y</div>
+    
+        <div id="13-cell" class="cells" style="top: 0;left:53.32%;">13</div>
+        <div id="14-cell" class="cells y-start" style="top: 6.66%;left:53.32%;">14</div>
+        <div id="15-cell" class="cells" style="top: 13.32%;left:53.32%;">15</div>
+        <div id="16-cell" class="cells" style="top: 19.98%;left:53.32%;">16</div>
+        <div id="17-cell" class="cells" style="top: 26.64%;left:53.32%;">17</div>
+        <div id="18-cell" class="cells" style="top: 33.3%;left:53.32%;">18</div>
+    
+        <div id="19-cell" class="cells" style="top: 40%; right: 33.3%">19</div>
+        <div id="20-cell" class="cells" style="top: 40%;right:26.64%;">20</div>
+        <div id="21-cell" class="cells" style="top: 40%;right:19.98%;">21</div>
+        <div id="22-cell" class="cells safe" style="top: 40%;right:13.32%;">22</div>
+        <div id="23-cell" class="cells" style="top: 40%;right:6.66%;">23</div>
+        <div id="24-cell" class="cells" style="top: 40%;right:0;">24</div>
+    
+        <div id="30-b-cell" class="cells blue" style="top: 46.66%; right: 33.3%">30-b</div>
+        <div id="29-b-cell" class="cells blue" style="top: 46.66%;right:26.64%;">29-b</div>
+        <div id="28-b-cell" class="cells blue" style="top: 46.66%;right:19.98%;">28-b</div>
+        <div id="27-b-cell" class="cells blue" style="top: 46.66%;right:13.32%;">27-b</div>
+        <div id="26-b-cell" class="cells blue" style="top: 46.66%;right:6.66%;">26-b</div>
+        <div id="25-cell" class="cells" style="top: 46.66%;right:0;">25</div>
+    
+        <div id="31-cell" class="cells" style="top: 53.32%; right: 33.3%">31</div>
+        <div id="30-cell" class="cells" style="top: 53.32%;right:26.64%;">30</div>
+        <div id="29-cell" class="cells" style="top: 53.32%;right:19.98%;">29</div>
+        <div id="28-cell" class="cells" style="top: 53.32%;right:13.32%;">28</div>
+        <div id="27-cell" class="cells b-start" style="top: 53.32%;right:6.66%;">27</div>
+        <div id="26-cell" class="cells" style="top: 53.32%;right:0;">26</div>
+    
+        <div id="37-cell" class="cells" style="bottom: 0;left:53.32%;">37</div>
+        <div id="36-cell" class="cells" style="bottom: 6.66%;left:53.32%;">36</div>
+        <div id="35-cell" class="cells safe" style="bottom: 13.32%;left:53.32%;">35</div>
+        <div id="34-cell" class="cells" style="bottom: 19.98%;left:53.32%;">34</div>
+        <div id="33-cell" class="cells" style="bottom: 26.64%;left:53.32%;">33</div>
+        <div id="32-cell" class="cells" style="bottom: 33.3%;left:53.32%;">32</div>
+    
+        <div id="38-cell" class="cells" style="bottom: 0;left:46.66%;">38</div>
+        <div id="39-r-cell" class="cells red " style="bottom: 6.66%;left:46.66%;">39-r</div>
+        <div id="40-r-cell" class="cells red" style="bottom: 13.32%;left:46.66%;">40-r</div>
+        <div id="41-r-cell" class="cells red" style="bottom: 19.98%;left:46.66%;">41-r</div>
+        <div id="42-r-cell" class="cells red" style="bottom: 26.64%;left:46.66%;">42-r</div>
+        <div id="43-r-cell" class="cells red" style="bottom: 33.3%;left:46.66%;">43-r</div>
+    
+        <div id="39-cell" class="cells" style="bottom: 0;left:40%;">39</div>
+        <div id="40-cell" class="cells r-start" style="bottom: 6.66%;left:40%;">40</div>
+        <div id="41-cell" class="cells" style="bottom: 13.32%;left:40%;">41</div>
+        <div id="42-cell" class="cells" style="bottom: 19.98%;left:40%;">42</div>
+        <div id="43-cell" class="cells" style="bottom: 26.64%;left:40%;">43</div>
+        <div id="44-cell" class="cells" style="bottom: 33.3%;left:40%;">44</div>
+    
+        <div id="45-cell" class="cells" style="top: 53.32%; left: 33.3%">45</div>
+        <div id="46-cell" class="cells" style="top: 53.32%;left:26.64%;">46</div>
+        <div id="47-cell" class="cells" style="top: 53.32%;left:19.98%;">47</div>
+        <div id="48-cell" class="cells safe" style="top: 53.32%;left:13.32%;">48</div>
+        <div id="49-cell" class="cells" style="top: 53.32%;left:6.66%;">49</div>
+        <div id="50-cell" class="cells" style="top: 53.32%;left:0;">50</div>
+    
+        <div id="56-g-cell" class="cells green" style="top: 46.66%;left: 33.3%">56-g</div>
+        <div id="55-g-cell" class="cells green" style="top: 46.66%;left:26.64%;">55-g</div>
+        <div id="54-g-cell" class="cells green" style="top: 46.66%;left:19.98%;">54-g</div>
+        <div id="53-g-cell" class="cells green" style="top: 46.66%;left:13.32%;">53-g</div>
+        <div id="52-g-cell" class="cells green" style="top: 46.66%;left:6.66%;">52-g</div>
+        <div id="51-cell" class="cells" style="top: 46.66%;left:0;">51</div>
+    
+    
+    </div>
+
+    <div>
+        <div class="info">
+            <div id="turnInfo"></div>
+            <div id="diceInfo"></div>
+        </div>
+        <div class="gotibox">
+            <div class="gotilabel">Gotis in home</div>
+            <div id="donegotis" class="donegotis"></div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="sock.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+  </body>
+</html>
