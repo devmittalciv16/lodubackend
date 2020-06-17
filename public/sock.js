@@ -1,6 +1,6 @@
 
 
-var sock = io("localhost:3002/");
+var sock = io("https://ludoqueer.herokuapp.com/");
 
 
 sock.on('roll', (msg)=>{
