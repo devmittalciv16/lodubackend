@@ -48,7 +48,9 @@ io.on('connection', (socket)=>{
 })
 
 app.use(cors());
-app.use('/', express.static(path.join(__dirname, './public/')));
+app.use('/', (req, res)=>{
+    res.send("Bhai kyu backhodi kar rha hai");
+});
 app.use('/', lobbyRouter);
 const portNumber = process.env.PORT||3002;
 
