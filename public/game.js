@@ -3,11 +3,8 @@ var chalArray = ["green", "yellow", "blue", "red"];
 var currentPlayer = 0;
 var chalPlayer = chalArray[currentPlayer];
 
-var greenGoti = '<div class="goti darkgreen"></div>'
-var blueGoti = '<div class="goti darkblue"></div>'
-var redGoti = '<div class="goti darkred"></div>'
-var yellowGoti = '<div class="goti darkyellow"></div>'
 var globalChalCount;
+var audio = new Audio("crack.ogg");
 var chalProcess = false;
 var nativePosition = {
     g1:"g-1-home",
@@ -81,8 +78,8 @@ makeBlanks =()=>{
         document.getElementById(pos).innerHTML = "";
     }
     Object.keys(gotiPosition).forEach((goti)=>{
-        //gotiPosition[goti][0] = nativePosition[goti];
-        gotiPosition[goti][1] = true;
+        gotiPosition[goti][0] = nativePosition[goti];
+        gotiPosition[goti][1] = false;
     })
 }
 
@@ -211,6 +208,7 @@ allDone = (player)=>{
 }
 
 rollProcess = (chalCount)=>{
+    audio.play();
     globalChalCount = chalCount;
     document.getElementById("diceInfo").innerHTML = chalPlayer+" got " + chalCount;
     chalProcess = true;
@@ -476,60 +474,11 @@ chalGreen = (chalCount)=>{
             let gotiBlock = document.getElementById(gotiPosition[goti][0]);
             gotiBlock.onclick = function(){
                 sock.emit('gchalf', [gotiPosition[goti][0], goti, chalCount]);
-                // let katta = false;
-                // let ghar = false;
-                // if(!gotiBlock || !chalProcess || chalPlayer !="green")return;
-                // if(!doesExist(gotiBlock, goti))return;
-                // let prev = gotiPosition[goti][0].split('-');
-                // if(prev.length == 2){
-                //     if(parseInt(prev[0])+chalCount <= 51){
-                //         findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-cell";
-                //         if(isSafe(document.getElementById(newPos+"-cell"))){
-                //             console.log("safe hai ye to");
-                //         }else{
-                //             console.log("katega");
-                //             katta = kaatDaalo(document.getElementById(newPos+"-cell"), goti);
-                //         }
-                //     }else{
-                //         findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-g-cell";                      
-                //     }
-                // }else{
-                //     if(parseInt(prev[0])+chalCount <= 56){
-                //         gotiBlock = findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-g-cell";
-                //     }else if(parseInt(prev[0])+chalCount >= 57){
-                //         gotiBlock = findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = "donegotis";
-                //         gotiPosition[goti][1] = false;
-                //         console.log("green home"); 
-                //         ghar = true;
-                //         allDone(goti[0]);                 
-                //     } 
-                // }
-                // if(chalCount!=6 && !katta && !ghar)turnChal();
-                // chalProcess = false;
-                // updateGoti(goti);
-                // return;
             }
         }else if(goti[0]=='g' && !gotiPosition[goti][1] && chalCount==6){
             let gotiBlock = document.getElementById(gotiPosition[goti][0]);
             gotiBlock.onclick = function(){
                 sock.emit('gchals', [gotiPosition[goti][0], goti, chalCount]);
-            //     if(gotiBlock == null || globalChalCount<6 || chalPlayer!="green" || !chalProcess)return;
-            //     if(!doesExist(gotiBlock, goti))return;
-            //     gotiBlock = findAndDelete(gotiBlock, goti);
-            //     gotiPosition[goti][0] = "1-cell";
-            //     gotiPosition[goti][1] = true;
-                
-            //     chalProcess = false;
-            //     updateGoti(goti);
-            //     return;
             }
             return;
         }
@@ -541,66 +490,12 @@ chalYellow = (chalCount)=>{
         if(goti[0]=='y' && gotiPosition[goti][1]){
             let gotiBlock = document.getElementById(gotiPosition[goti][0]);
             gotiBlock.onclick = function(){
-                sock.emit('ychalf', [gotiPosition[goti][0], goti, chalCount]);
-                // let katta = false;
-                // let ghar = false;
-                // if(!chalProcess || chalPlayer!="yellow")return;
-                // if(!doesExist(gotiBlock, goti))return;
-                // let prev = gotiPosition[goti][0].split('-');
-                // if(prev.length == 2){
-                //     if(parseInt(prev[0])<=12 && parseInt(prev[0])+chalCount>12){
-                //         findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-y-cell";                      
-                //     }else{
-                //         findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         if(newPos<=51){
-                //             gotiPosition[goti][0] = newPos+"-cell";
-                //         }
-                //         else{
-                //             gotiPosition[goti][0] = newPos-52+"-cell";
-                //             newPos = newPos-52;
-                //         }
-                //         if(isSafe(document.getElementById(newPos+"-cell"))){
-                //             console.log("safe hai ye to");
-                //         }else{
-                //             console.log("katega");
-                //             katta = kaatDaalo(document.getElementById(newPos+"-cell"), goti);
-                //         }
-                //     }
-                // }else{
-                //     if(parseInt(prev[0])+chalCount <= 17){
-                //         gotiBlock = findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-y-cell";
-                //     }else if(parseInt(prev[0])+chalCount >= 18){
-                //         gotiBlock = findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = "donegotis";
-                //         gotiPosition[goti][1] = false;
-                //         console.log("yellow home");  
-                //         ghar = true;
-                //         allDone(goti[0])                
-                //     } 
-                // }
-                // if(chalCount!=6 && !katta && !ghar)turnChal();
-                // chalProcess = false;
-                // updateGoti(goti);
-                // return;
+                sock.emit('ychalf', [gotiPosition[goti][0], goti, chalCount]);   
             }
         }else if(goti[0]=='y' && !gotiPosition[goti][1] && chalCount==6){
             let gotiBlock = document.getElementById(gotiPosition[goti][0]);
             gotiBlock.onclick = function(){
                 sock.emit('ychals', [gotiPosition[goti][0], goti, chalCount]);
-                // if(gotiBlock == null || globalChalCount<6 ||chalPlayer!="yellow" || !chalProcess)return;
-                // if(!doesExist(gotiBlock, goti))return;
-                // gotiBlock = findAndDelete(gotiBlock, goti);
-                // gotiPosition[goti][0] = "14-cell";
-                // gotiPosition[goti][1] = true;
-                // chalProcess = false;
-                // updateGoti(goti);
-                // return;
             }
         }
     })   
@@ -612,65 +507,11 @@ chalBlue = (chalCount)=>{
             let gotiBlock = document.getElementById(gotiPosition[goti][0]);
             gotiBlock.onclick = function(){
                 sock.emit('bchalf', [gotiPosition[goti][0], goti, chalCount]);
-                // let katta = false;
-                // let ghar = false;
-                // if(!chalProcess || chalPlayer!="blue")return;
-                // if(!doesExist(gotiBlock, goti))return;
-                // let prev = gotiPosition[goti][0].split('-');
-                // if(prev.length == 2){
-                //     if(parseInt(prev[0])<=25 && parseInt(prev[0])+chalCount>25){
-                //         findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-b-cell";                      
-                //     }else{
-                //         findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         if(newPos<=51){
-                //             gotiPosition[goti][0] = newPos+"-cell";
-                //         }
-                //         else{
-                //             gotiPosition[goti][0] = newPos-52+"-cell";
-                //             newPos = newPos-52;
-                //         }
-                //         if(isSafe(document.getElementById(newPos+"-cell"))){
-                //             console.log("safe hai ye to");
-                //         }else{
-                //             console.log("katega");
-                //             katta = kaatDaalo(document.getElementById(newPos+"-cell"), goti);
-                //         }
-                //     }
-                // }else{
-                //     if(parseInt(prev[0])+chalCount <= 30){
-                //         gotiBlock = findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-b-cell";
-                //     }else if(parseInt(prev[0])+chalCount >= 30){
-                //         gotiBlock = findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = "donegotis";
-                //         gotiPosition[goti][1] = false;
-                //         console.log("blue home");        
-                //         ghar = true;
-                //         allDone(goti[0]);          
-                //     } 
-                // }
-                // if(chalCount!=6 && !katta && !ghar)turnChal();
-                // chalProcess = false;
-                // updateGoti(goti);
-                // return;
             }
         }else if(goti[0]=='b' && !gotiPosition[goti][1] && chalCount==6){
             let gotiBlock = document.getElementById(gotiPosition[goti][0]);
             gotiBlock.onclick = function(){
                 sock.emit('bchals', [gotiPosition[goti][0], goti, chalCount]);
-                // if(gotiBlock == null || globalChalCount<6 ||chalPlayer!="blue" || !chalProcess)return;
-                // if(!doesExist(gotiBlock, goti))return;
-                // gotiBlock = findAndDelete(gotiBlock, goti);
-                // gotiPosition[goti][0] = "27-cell";
-                // gotiPosition[goti][1] = true;
-                // chalProcess = false;
-                // updateGoti(goti);
-                // return;
             }
         }
     })   
@@ -682,65 +523,11 @@ chalRed = (chalCount)=>{
             let gotiBlock = document.getElementById(gotiPosition[goti][0]);
             gotiBlock.onclick = function(){
                 sock.emit('rchalf', [gotiPosition[goti][0], goti, chalCount]);
-                // let katta = false;
-                // let ghar = false;
-                // if(!chalProcess || chalPlayer!="red")return;
-                // if(!doesExist(gotiBlock, goti))return;
-                // let prev = gotiPosition[goti][0].split('-');
-                // if(prev.length == 2){
-                //     if(parseInt(prev[0])<=38 && parseInt(prev[0])+chalCount>38){
-                //         findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-r-cell";                      
-                //     }else{
-                //         findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         if(newPos<=51){
-                //             gotiPosition[goti][0] = newPos+"-cell";
-                //         }
-                //         else{
-                //             gotiPosition[goti][0] = newPos-52+"-cell";
-                //             newPos = newPos-52;
-                //         }
-                //         if(isSafe(document.getElementById(newPos+"-cell"))){
-                //             console.log("safe hai ye to");
-                //         }else{
-                //             console.log("katega");
-                //             katta = kaatDaalo(document.getElementById(newPos+"-cell"), goti);
-                //         }
-                //     }
-                // }else{
-                //     if(parseInt(prev[0])+chalCount <= 43){
-                //         gotiBlock = findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = newPos+"-r-cell";
-                //     }else if(parseInt(prev[0])+chalCount >= 43){
-                //         gotiBlock = findAndDelete(gotiBlock, goti);
-                //         let newPos = parseInt(prev[0])+chalCount;
-                //         gotiPosition[goti][0] = "donegotis";
-                //         gotiPosition[goti][1] = false;
-                //         console.log("red home");       
-                //         ghar = true;
-                //         allDone(goti[0]);           
-                //     } 
-                // }
-                // if(chalCount!=6 && !katta && !ghar)turnChal();
-                // chalProcess = false;
-                // updateGoti(goti);
-                // return;
             }
         }else if(goti[0]=='r' && !gotiPosition[goti][1] && chalCount==6){
             let gotiBlock = document.getElementById(gotiPosition[goti][0]);
             gotiBlock.onclick = function(){
                 sock.emit('rchals', [gotiPosition[goti][0], goti, chalCount]);
-                // if(gotiBlock == null || globalChalCount<6 || chalPlayer!="red" || !chalProcess)return;
-                // if(!doesExist(gotiBlock, goti))return;
-                // gotiBlock = findAndDelete(gotiBlock, goti);
-                // gotiPosition[goti][0] = "40-cell";
-                // gotiPosition[goti][1] = true;
-                // chalProcess = false;
-                // updateGoti(goti);
-                // return;
             }
         }
     })   
