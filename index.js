@@ -17,8 +17,11 @@ io.on('connection', (socket)=>{
     socket.on('start', (msg)=>{
         io.sockets.in(msg).emit('start', msg);
     })
+
+    socket.on('chat', (msg)=>{
+        io.sockets.in(msg.pathname).emit('chat', msg);
+    })
     socket.on('roll', (msg)=>{
-        console.log(msg);
         io.sockets.in(msg.link).emit('roll', msg);
     })
     socket.on('gchalf', (msg)=>{
